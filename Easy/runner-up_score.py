@@ -4,7 +4,7 @@ if __name__ == "__main__":
     best_score = max(arr)
     runner_up_score = -101
     for score in arr:
-        if score < best_score and score > runner_up_score:
+        if runner_up_score < score < best_score:
             runner_up_score = score
 
     print(runner_up_score)
