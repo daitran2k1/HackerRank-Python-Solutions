@@ -5,15 +5,17 @@ if __name__ == "__main__":
         score = float(input())
         records.append([name, score])
 
-    scores = set(record[1] for record in records)
-    lowest_score = min(scores)
-    second_lowest_score = max(scores)
-    for score in scores:
-        if lowest_score < score < second_lowest_score:
-            second_lowest_score = score
+    lowest_score = float("inf")
+    second_lowest_score = float("inf")
+    for name, grade in records:
+        if grade < lowest_score:
+            second_lowest_score = lowest_score
+            lowest_score = grade
+        elif lowest_score < grade < second_lowest_score:
+            second_lowest_score = grade
 
-    people = sorted(
-        [record[0] for record in records if record[1] == second_lowest_score]
+    second_lowest_students = sorted(
+        [name for name, grade in records if grade == second_lowest_score]
     )
-    for person in people:
-        print(person)
+    for student in second_lowest_students:
+        print(student)
